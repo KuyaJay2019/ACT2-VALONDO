@@ -63,6 +63,7 @@
 
                 searchGif.attr("src", gifLoadLocation);
                 
+                $( "h3" ).remove('h3');
                 $('.searched').remove();
                 //Display input value
                 //console.log(inputVal.val());
@@ -108,10 +109,11 @@
 
                                 Display No results found from "the keyword you searched" (if there's no data)
                                     Display cat.gif*/
-                                $( "h3" ).remove('h3');
                                 
                                 
                                 //console.log(parameter.length);
+                                searchGif.attr("src", gifLoadLocation);
+                                
                                 if(parameter.length >= 1){
                                     resultContainer.append(`<h3>Search results for "${inputVal.val()}"</h3>`);
                                     $('h3').css("paddingTop", "20px");
@@ -133,11 +135,13 @@
                                     `);
                                     
                                 })
+                                    
                                 }
                                 else{
                                     $('.searched').remove();
+                                    $( "h3" ).remove('h3');
                                     resultContainer.append(`<h3>No search results for "${inputVal.val()}"</h3>`);
-                                    searchGif.css("margin-top","-5px")
+                                    searchGif.css("margin-top","-20px");
                                     searchGif.attr("src" , gifNoResultLocation);
                                 }
 
@@ -152,7 +156,7 @@
                                 * reset the value of the form to blank
                                 * other things that you want to add*/
 
-                                // Coded ********************************************
+                                // Coded ********************************************  
                                 inputVal.val('');
                             })
                 
