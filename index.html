@@ -10,7 +10,7 @@
 <body>
     <header>
         <div class="container">
-            <h1>Cat Rant A Do Hon</h1>
+            <h1>PUSSY CATCAT</h1>
         </div>
     </header>
 
@@ -47,7 +47,9 @@
                 //Prevents the form to reload the page
                 e.preventDefault();
                 
-                console.log(getCat.val());
+                loading.attr("src", imgLoading);
+
+                //console.log(getCat.val());
 
                 // Make an API request IN THIS LINE
                  
@@ -85,8 +87,18 @@
 
                                 Display No results found from "the keyword you searched" (if there's no data)
                                     Display cat.gif*/
+                                if(parameter.length == 1){
+                                    // Change Loading
+                                    loading.remove();
+                                    parameter.forEach(function(res){
 
-                                loading.attr("src", imgLoading);
+                                    })
+                                }
+                                else {
+                                    loading.attr("src", imgNoResults);
+                                }
+
+                                
                             })
                             .catch(function(){
                                // Handle error here IF NEEDED
