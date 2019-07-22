@@ -10,7 +10,7 @@
 <body>
     <header>
         <div class="container">
-            <h1>PUSSY CATCAT</h1>
+            <h1>CATS MANIA</h1>
         </div>
     </header>
 
@@ -23,14 +23,14 @@
 
     
 
-    <div class="container cat-search">
+    <div class="container cat-search" id="result">
         <!-- Do some awesome stuff here -->
-        <div id="result">
-            
-        </div>
+       
     </div>
     
-    <img src="" alt="" id="search-gif">
+    
+
+    <img src="./public/img/cat.gif" alt="" id="search-gif">
     
 
     <script src="./public/js/jquery.min.js"></script>
@@ -45,7 +45,7 @@
             var inputVal = $("#cat-keyword");
             var searchGif = $('#search-gif');
             var resultContainer = $('#result');
-            
+            var resources = $('#res');
             var gifLoadLocation = "./public/img/cat2.gif";
             var gifNoResultLocation = "./public/img/cat.gif"; 
             //These are the variables we need to request from the API
@@ -55,16 +55,15 @@
             
             //Trigger submit form
             searchForm.on('submit', function(e){
-                
+
+                               
                 //Prevents the form to reload the page
                 e.preventDefault();
 
 
                 searchGif.attr("src", gifLoadLocation);
-
                 
-
-                
+                $('.searched').remove();
                 //Display input value
                 //console.log(inputVal.val());
                 
@@ -111,27 +110,32 @@
                                     Display cat.gif*/
                                 $( "h3" ).remove('h3');
                                 
-                                if(parameter.length == 1){
+                                
+                                //console.log(parameter.length);
+                                if(parameter.length >= 1){
                                     resultContainer.append(`<h3>Search results for "${inputVal.val()}"</h3>`);
+                                    $('.searched').remove();    
                                     searchGif.attr("src" , null);
                                     parameter.forEach(function(res){
-                                        var catName = res.name;
+                                        var searchInput = res.name;
                                         var description = res.description;
-
+                                        var origin = res.origin;
                                         resultContainer.append(`
-                                        <form id="res">
-                                            <h5>${catName}</h5>
+                                        <form id="res" class="searched">
+                                            <h4>${searchInput}</h4>
                                             <hr>
+                                            <p>${origin}</p>
                                             <p>${description}</p>
-                                            <a href="https://en.wikipedia.org/wiki/${catName}_cat">Search on Wikipedia</a>
+                                            <a href="https://en.wikipedia.org/wiki/${searchInput}">Search on Wikipedia</a>
                                         </form>
                                     `);
-
+                                    
                                 })
                                 }
                                 else{
-                                    $('#res').remove();
+                                    $('.searched').remove();
                                     resultContainer.append(`<h3>No search results for "${inputVal.val()}"</h3>`);
+                                    searchGif.css("margin-top","-5px")
                                     searchGif.attr("src" , gifNoResultLocation);
                                 }
 
