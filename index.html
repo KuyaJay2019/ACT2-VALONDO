@@ -10,7 +10,7 @@
 <body>
     <header>
         <div class="container">
-            <h1>CATS MANIA</h1>
+            <h1>Cat Ni Pabs</h1>
         </div>
     </header>
 
@@ -114,6 +114,8 @@
                                 //console.log(parameter.length);
                                 if(parameter.length >= 1){
                                     resultContainer.append(`<h3>Search results for "${inputVal.val()}"</h3>`);
+                                    $('h3').css("paddingTop", "20px");
+                                    $('h3').css("paddingBottom", "10px");
                                     $('.searched').remove();    
                                     searchGif.attr("src" , null);
                                     parameter.forEach(function(res){
